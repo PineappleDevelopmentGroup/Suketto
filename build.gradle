@@ -1,6 +1,6 @@
 plugins {
     id "java"
-    id "com.github.johnrengelman.shadow" version "7.1.0"
+    id "com.github.johnrengelman.shadow" version "7.1.2"
     id "io.freefair.aggregate-javadoc-jar" version "8.0.1"
     id 'maven-publish'
 }
@@ -55,8 +55,8 @@ subprojects {
             links 'https://hub.spigotmc.org/javadocs/spigot/'
             addStringOption('Xdoclint:none', '-quiet')
             tags "nms:a:Requires NMS support"
-            exclude "com/jeff_media/lunatic/internal/**"
-            exclude "com/jeff_media/lunatic/nms/**"
+            exclude "sh/miles/suketto/internal/**"
+            exclude "sh/miles/suketto/nms/**"
         }
     }
 
@@ -107,7 +107,7 @@ subprojects {
 
 tasks.named('aggregateJavadoc', Javadoc) {
     options {
-        title "Lunatic " + project.version
+        title "Suketto " + project.version
         overview "javadoc/overview.html"
     }
 }
@@ -133,19 +133,20 @@ publishing {
         shadow(MavenPublication) { publication ->
             project.shadow.component(publication)
             publication.artifact(aggregateJavadocJar)
-        }
-    }
-    repositories {
-        maven {
-            credentials {
-                username = "$milesMavenUser"
-                password = "$milesMavenPass"
+
+            repositories {
+                maven {
+                    credentials {
+                        username = "$milesMavenUser"
+                        password = "$milesMavenPass"
+                    }
+                    url = "https://maven.miles.sh/libraries"
+                }
             }
-            url = "https://maven.miles.sh/libraries"
         }
     }
 }
 
-aggregateJavadocJar {
-    getDestinationDirectory().set(file(getBuildDir().toPath().resolve("docs")))
-}
+    aggregateJavadocJar {
+        getDestinationDirectory().set(file(getBuildDir().toPath().resolve("docs")))
+    }
