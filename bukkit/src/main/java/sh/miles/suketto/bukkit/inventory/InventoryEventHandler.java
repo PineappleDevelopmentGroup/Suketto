@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Handles Inventory Events
  */
-public interface InventoryHandler {
+public interface InventoryEventHandler {
 
     /**
      * Handles all click events going towards this InventoryHandler

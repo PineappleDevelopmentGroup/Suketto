@@ -1,4 +1,4 @@
-package sh.miles.suketto.core.collection;
+package sh.miles.suketto.core.collection.hold;
 
 import org.jetbrains.annotations.Nullable;
 

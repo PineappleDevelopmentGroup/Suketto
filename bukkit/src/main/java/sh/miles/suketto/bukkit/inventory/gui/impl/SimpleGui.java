@@ -1,4 +1,4 @@
-package sh.miles.suketto.bukkit.inventory.gui;
+package sh.miles.suketto.bukkit.inventory.gui.impl;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.entity.Player;
@@ -7,13 +7,15 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import sh.miles.suketto.bukkit.inventory.button.Button;
+import sh.miles.suketto.bukkit.inventory.gui.AbstractGui;
+import sh.miles.suketto.bukkit.inventory.gui.GuiType;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * A Simple Implementation of {@link AbstractGui} which provides basic GUI functionality This class is intended to be
- * extended but you can use it without doing so
+ * extended, but you can use it without doing so.
  */
 public class SimpleGui extends AbstractGui {
 
@@ -55,14 +57,12 @@ public class SimpleGui extends AbstractGui {
     public void handleClick(@NotNull InventoryClickEvent event) {
         final Button button = this.buttons.get(event.getSlot());
         if (button != null) {
-            button.click().accept(event);
+            button.click(event);
         }
     }
 
     @Override
     protected void decorate(@NotNull Player player) {
-        this.buttons.forEach(
-                (Integer slot, Button button) -> super.inventory.setItem(slot, button.icon().apply(player))
-        );
+        this.buttons.forEach((Integer slot, Button button) -> super.inventory.setItem(slot, button.icon()));
     }
 }

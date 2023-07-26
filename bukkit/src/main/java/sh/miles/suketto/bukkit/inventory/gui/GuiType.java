@@ -1,9 +1,9 @@
-package sh.miles.suketto.bukkit.gui;
+package sh.miles.suketto.bukkit.inventory.gui;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.event.inventory.InventoryType;
 import sh.miles.suketto.bukkit.internal.annotations.NMS;
-import sh.miles.suketto.bukkit.minecraft.nms.ServerClassHandler;
+import sh.miles.suketto.bukkit.minecraft.nms.NMSHandle;
 import sh.miles.suketto.nms.inventory.SukettoInventory;
 
 /**
@@ -47,9 +47,9 @@ public enum GuiType {
     @NMS
     public SukettoInventory create(BaseComponent[] title) {
         if (this.inventoryType == InventoryType.CHEST) {
-            return ServerClassHandler.INVENTORY_HANDLE.inventory(null, this.size, title);
+            return NMSHandle.INVENTORY.inventory(null, this.size, title);
         }
 
-        return ServerClassHandler.INVENTORY_HANDLE.inventory(null, this.inventoryType, title);
+        return NMSHandle.INVENTORY.inventory(null, this.inventoryType, title);
     }
 }

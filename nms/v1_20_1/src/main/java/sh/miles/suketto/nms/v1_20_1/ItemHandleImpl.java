@@ -1,14 +1,15 @@
-package sh.miles.suketto.nms.v1_19_4;
+package sh.miles.suketto.nms.v1_20_1;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import sh.miles.suketto.nms.ItemHandle;
 import sh.miles.suketto.nms.inventory.item.ComponentItemStackBuilder;
-import sh.miles.suketto.nms.v1_19_4.inventory.item.ComponentItemStackBuilderImpl;
+import sh.miles.suketto.nms.v1_20_1.inventory.item.ComponentItemStackBuilderImpl;
 
 import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class ItemHandleImpl implements ItemHandle {
 
     @Override

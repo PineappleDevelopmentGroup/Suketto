@@ -1,4 +1,4 @@
-package sh.miles.suketto.nms.v1_19_4.inventory.item;
+package sh.miles.suketto.nms.v1_20_1.inventory.item;
 
 import com.google.common.base.Preconditions;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -8,9 +8,9 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_19_R3.inventory.CraftItemStack;
-import org.bukkit.craftbukkit.v1_19_R3.util.CraftChatMessage;
-import org.bukkit.craftbukkit.v1_19_R3.util.CraftMagicNumbers;
+import org.bukkit.craftbukkit.v1_20_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_20_R1.util.CraftChatMessage;
+import org.bukkit.craftbukkit.v1_20_R1.util.CraftMagicNumbers;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;

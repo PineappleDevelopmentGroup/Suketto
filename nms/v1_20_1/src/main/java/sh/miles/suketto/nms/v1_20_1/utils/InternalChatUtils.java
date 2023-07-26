@@ -1,9 +1,9 @@
-package sh.miles.suketto.nms.v1_19_4.utils;
+package sh.miles.suketto.nms.v1_20_1.utils;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
 import net.minecraft.network.chat.Component;
-import org.bukkit.craftbukkit.v1_19_R3.util.CraftChatMessage;
+import org.bukkit.craftbukkit.v1_20_R1.util.CraftChatMessage;
 
 /**
  * Internal Utility Class

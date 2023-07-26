@@ -1,0 +1,21 @@
+repositories {
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url 'https://repo.minebench.de/' }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT'
+    testImplementation 'com.github.seeseemelk:MockBukkit-v1.19:2.29.0'
+
+    compileOnly project(':core')
+    testImplementation project(':core')
+
+    compileOnly project(':nms:base')
+    compileOnly project(':nms:v1_19_4')
+
+    implementation 'de.themoep:minedown:1.7.1-SNAPSHOT'
+}
+
+java {
+    withJavadocJar()
+}

@@ -1,4 +1,4 @@
-package sh.miles.suketto.nms.v1_19_4;
+package sh.miles.suketto.nms.v1_19_4.inventory;
 
 import com.google.common.base.Preconditions;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -23,6 +23,7 @@ import org.bukkit.inventory.InventoryView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sh.miles.suketto.nms.inventory.SukettoInventory;
+import sh.miles.suketto.nms.v1_19_4.utils.InternalChatUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,6 +40,11 @@ public class SukettoInventoryImpl implements SukettoInventory {
         this.inventory = new CraftInventory(new SukettoMinecraftInventory(holder, size, title));
     }
 
+    public SukettoInventoryImpl(@NotNull final InventoryHolder holder, InventoryType type, BaseComponent[] title) {
+        this.title = title;
+        this.inventory = new CraftInventory(new SukettoMinecraftInventory(holder, type, title));
+    }
+
     @Nullable
     @Override
     public InventoryView open(@NotNull HumanEntity entity) {
@@ -53,7 +59,7 @@ public class SukettoInventoryImpl implements SukettoInventory {
             return null;
         }
 
-        player.connection.send(new ClientboundOpenScreenPacket(menu.containerId, menuType, NMSUtils.toMojangComponent(this.title)));
+        player.connection.send(new ClientboundOpenScreenPacket(menu.containerId, menuType, InternalChatUtils.toMojangComponent(this.title)));
         player.containerMenu = menu;
         player.initMenu(menu);
         return player.containerMenu.getBukkitView();
@@ -89,7 +95,7 @@ public class SukettoInventoryImpl implements SukettoInventory {
         private final InventoryHolder owner;
 
         public SukettoMinecraftInventory(InventoryHolder owner, InventoryType type) {
-            this(owner, type.getDefaultSize(), NMSUtils.toBungeeComponent(type.getDefaultTitle()));
+            this(owner, type.getDefaultSize(), InternalChatUtils.toBungeeComponent(type.getDefaultTitle()));
             this.type = type;
         }
 
@@ -99,7 +105,7 @@ public class SukettoInventoryImpl implements SukettoInventory {
         }
 
         public SukettoMinecraftInventory(InventoryHolder owner, int size) {
-            this(owner, size, NMSUtils.toBungeeComponent("Chest"));
+            this(owner, size, InternalChatUtils.toBungeeComponent("Chest"));
         }
 
         public SukettoMinecraftInventory(InventoryHolder owner, int size, BaseComponent[] title) {
@@ -223,6 +229,7 @@ public class SukettoInventoryImpl implements SukettoInventory {
         public void startOpen(@NotNull Player player) {
 
         }
+
         @Override
         public void stopOpen(@NotNull Player player) {
 
@@ -269,7 +276,7 @@ public class SukettoInventoryImpl implements SukettoInventory {
         final ServerPlayer entityPlayer = (ServerPlayer) ((CraftHumanEntity) view.getPlayer()).getHandle();
         final int containerId = entityPlayer.containerMenu.containerId;
         final MenuType<?> windowType = CraftContainer.getNotchInventoryType(view.getTopInventory());
-        entityPlayer.connection.send(new ClientboundOpenScreenPacket(containerId, windowType, NMSUtils.toMojangComponent(title)));
+        entityPlayer.connection.send(new ClientboundOpenScreenPacket(containerId, windowType, InternalChatUtils.toMojangComponent(title)));
         ((org.bukkit.entity.Player) view.getPlayer()).updateInventory();
     }
 }

@@ -7,25 +7,20 @@ import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import sh.miles.suketto.core.utils.ReflectionUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 /**
- * Bridges the gap between spigot and Suketto command interfaces and interactions
+ * Holds official interactions between SpigotAPI commandMap and Suketto Command classes
  */
-public final class SpigotCommandBridge {
+public final class CommandRegistrar {
 
-    private static CommandMap commandMap;
-    private static Map<String, org.bukkit.command.Command> knownCommands;
+    private final CommandMap commandMap;
+    private final Map<String, org.bukkit.command.Command> knownCommands;
 
-
-    /**
-     * Utility
-     */
-    private SpigotCommandBridge() {
+    @SuppressWarnings("unchecked")
+    public CommandRegistrar() {
+        this.commandMap = ReflectionUtils.getField(Bukkit.getPluginManager(), "commandMap", CommandMap.class);
+        this.knownCommands = (Map<String, org.bukkit.command.Command>) ReflectionUtils.getField(commandMap, "knownCommands", Map.class);
     }
 
     /**
@@ -33,7 +28,7 @@ public final class SpigotCommandBridge {
      *
      * @param command the command to register
      */
-    public static void register(@NotNull final Plugin plugin, @NotNull final Command command) {
+    public void register(@NotNull final Plugin plugin, @NotNull final Command command) {
         final CommandLabel label = command.commandLabel();
         final PluginCommand pluginCommand = ReflectionUtils.newInstance(PluginCommand.class, new Object[]{label.name(), plugin});
         if (pluginCommand == null) {
@@ -46,10 +41,6 @@ public final class SpigotCommandBridge {
         pluginCommand.setExecutor((s, c, l, a) -> command.execute(s, a));
         pluginCommand.setTabCompleter((s, c, l, a) -> command.complete(s, a));
 
-        if (commandMap == null) {
-            init();
-        }
-
         if (!commandMap.register(plugin.getName(), pluginCommand)) {
             throw new IllegalStateException("Command with the name " + pluginCommand.getName() + " already exists");
         }
@@ -60,11 +51,7 @@ public final class SpigotCommandBridge {
      *
      * @param plugin the plugins whose commands to unregister
      */
-    public static void unregisterAll(@NotNull final Plugin plugin) {
-        if (knownCommands == null) {
-            init();
-        }
-
+    public void unregisterAll(@NotNull final Plugin plugin) {
         knownCommands.entrySet().removeIf((Map.Entry<String, org.bukkit.command.Command> entry) -> {
             final String label = entry.getKey();
             if (!(entry.getValue() instanceof PluginCommand pluginCommand)) {
@@ -73,12 +60,6 @@ public final class SpigotCommandBridge {
 
             return plugin.getName().equals(pluginCommand.getPlugin().getName());
         });
-    }
-
-    @SuppressWarnings("unchecked")
-    private static void init() {
-        commandMap = ReflectionUtils.getField(Bukkit.getPluginManager(), "commandMap", CommandMap.class);
-        knownCommands = (Map<String, org.bukkit.command.Command>) ReflectionUtils.getField(commandMap, "knownCommands", Map.class);
     }
 
 }

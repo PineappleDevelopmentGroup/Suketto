@@ -1,4 +1,4 @@
-package sh.miles.suketto.nms.v1_19_4;
+package sh.miles.suketto.nms.v1_19_4.utils;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
@@ -9,12 +9,12 @@ import org.bukkit.craftbukkit.v1_19_R3.util.CraftChatMessage;
  * Internal Utility Class
  */
 @SuppressWarnings("deprecation")
-public final class NMSUtils {
+public final class InternalChatUtils {
 
     /**
      * Utility Class
      */
-    private NMSUtils() {
+    private InternalChatUtils() {
 
     }
 

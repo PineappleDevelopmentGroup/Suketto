@@ -1,4 +1,4 @@
-package sh.miles.suketto.nms.v1_19_4;
+package sh.miles.suketto.nms.v1_19_4.inventory.item;
 
 import com.google.common.base.Preconditions;
 import net.md_5.bungee.api.chat.BaseComponent;

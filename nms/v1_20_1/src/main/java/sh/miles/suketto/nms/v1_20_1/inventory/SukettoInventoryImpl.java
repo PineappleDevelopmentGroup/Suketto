@@ -1,4 +1,4 @@
-package sh.miles.suketto.nms.v1_19_4.inventory;
+package sh.miles.suketto.nms.v1_20_1.inventory;
 
 import com.google.common.base.Preconditions;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -10,11 +10,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_19_R3.entity.CraftHumanEntity;
-import org.bukkit.craftbukkit.v1_19_R3.event.CraftEventFactory;
-import org.bukkit.craftbukkit.v1_19_R3.inventory.CraftContainer;
-import org.bukkit.craftbukkit.v1_19_R3.inventory.CraftInventory;
-import org.bukkit.craftbukkit.v1_19_R3.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_20_R1.entity.CraftHumanEntity;
+import org.bukkit.craftbukkit.v1_20_R1.event.CraftEventFactory;
+import org.bukkit.craftbukkit.v1_20_R1.inventory.CraftContainer;
+import org.bukkit.craftbukkit.v1_20_R1.inventory.CraftInventory;
+import org.bukkit.craftbukkit.v1_20_R1.inventory.CraftItemStack;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
@@ -23,7 +23,7 @@ import org.bukkit.inventory.InventoryView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sh.miles.suketto.nms.inventory.SukettoInventory;
-import sh.miles.suketto.nms.v1_19_4.utils.InternalChatUtils;
+import sh.miles.suketto.nms.v1_20_1.utils.InternalChatUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;

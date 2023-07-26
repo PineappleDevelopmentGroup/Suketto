@@ -1,4 +1,4 @@
-package sh.miles.suketto.nms;
+package sh.miles.suketto.nms.inventory;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.entity.HumanEntity;

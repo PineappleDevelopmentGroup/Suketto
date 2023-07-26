@@ -1,4 +1,4 @@
-package sh.miles.suketto.nms.v1_19_4;
+package sh.miles.suketto.nms.v1_20_1;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.event.inventory.InventoryType;
@@ -6,7 +6,7 @@ import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 import sh.miles.suketto.nms.InventoryHandle;
 import sh.miles.suketto.nms.inventory.SukettoInventory;
-import sh.miles.suketto.nms.v1_19_4.inventory.SukettoInventoryImpl;
+import sh.miles.suketto.nms.v1_20_1.inventory.SukettoInventoryImpl;
 
 @SuppressWarnings("deprecation")
 public class InventoryHandleImpl implements InventoryHandle {
